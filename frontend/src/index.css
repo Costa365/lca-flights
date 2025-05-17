@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Consolas', 'Monaco', monospace;
+  }
+}
+
+@keyframes flip {
+  0% {
+    transform: perspective(400px) rotateX(0);
+    animation-timing-function: ease-out;
+  }
+  40% {
+    transform: perspective(400px) rotateX(-20deg);
+    animation-timing-function: ease-in;
+  }
+  60% {
+    transform: perspective(400px) rotateX(10deg);
+    animation-timing-function: ease-in-out;
+  }
+  80% {
+    transform: perspective(400px) rotateX(-5deg);
+    animation-timing-function: ease-in-out;
+  }
+  100% {
+    transform: perspective(400px) rotateX(0);
+    animation-timing-function: ease-in-out;
+  }
+}
+
+@layer utilities {
+  .animate-flip {
+    animation: flip 0.5s ease-in-out;
+    transform-style: preserve-3d;
+  }
+}
+
+/* Customize scrollbar for the dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b3b3b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
