@@ -38,18 +38,34 @@ const ArrivalsBoard: React.FC = () => {
   }
   
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
-      <header className="bg-blue-900 p-4 sticky top-0 z-10">
+    <div className="min-h-screen bg-gray-900 text-black">
+      <header className="bg-yellow-400 p-4 sticky top-0 z-10">
         <div className="container mx-auto">
-          <h1 className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center">
-            <span className="mr-2">🛬</span> 
+            <h1 className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 100 100"
+                width="48"
+                height="48"
+                className="mr-2"
+                aria-label="Arrivals"
+              >
+                <g>
+                  <rect x="0" y="0" width="100" height="100" fill="#000" rx="2" />
+                  <rect x="10" y="85" width="80" height="7" fill="#ffe600" rx="2" />
+                  <path
+                    d="M15 20 L25 23 L30 40 L60 50 L35 20 L45 22 L80 62 Q85 70 80 72 Q75 74 15 48 Q10 45 15 43 Z"
+                    fill="#ffe600"
+                  />
+                </g>
+              </svg>
             LARNACA AIRPORT ARRIVALS
           </h1>
-          <div className="flex justify-between items-center mt-2 text-sm text-gray-300">
+          <div className="flex justify-between items-center mt-2 text-sm">
             <p>Last updated: {formatLastUpdated()}</p>
             <button 
               onClick={() => refreshData()}
-              className="bg-blue-700 hover:bg-blue-800 px-2 py-1 rounded flex items-center"
+              className="bg-black hover:bg-blue-900 px-2 py-1 rounded flex items-center text-white"
               disabled={loading}
             >
               <RotateCcw size={14} className={`mr-1 ${loading ? 'animate-spin' : ''}`} />

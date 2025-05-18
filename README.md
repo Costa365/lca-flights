@@ -31,7 +31,7 @@ The frontend will be available at `http://localhost` and the API will be availab
 ## Testing
 
 ```
-docker-compose run --rm api pytest
+docker compose run --rm backend pytest
 ```
 
 ---
