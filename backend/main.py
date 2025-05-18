@@ -91,21 +91,31 @@ async def update_cache_periodically():
         flight_cache["last_updated"] = int(time.time())
         await asyncio.sleep(300)  # 5 minutes
 
+
 @asynccontextmanager
-def lifespan(app: FastAPI):
-    asyncio.create_task(update_cache_periodically())
-    yield
+async def lifespan(app: FastAPI):
+    task = asyncio.create_task(update_cache_periodically())
+    try:
+        yield
+    finally:
+        task.cancel()
+        try:
+            await task
+        except Exception:
+            pass
+
 
 app = FastAPI(lifespan=lifespan)
 
 # Add CORS middleware to allow frontend requests
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # You can restrict this to your frontend's URL in production
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 @app.get("/lca-arrivals")
 async def get_arrivals():
@@ -113,6 +123,7 @@ async def get_arrivals():
         "last_updated": flight_cache["last_updated"],
         "arrivals": flight_cache["arrivals"]
     })
+
 
 @app.get("/lca-departures")
 async def get_departures():
