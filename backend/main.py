@@ -8,17 +8,7 @@ from bs4 import BeautifulSoup
 import certifi
 import ssl
 from fastapi.middleware.cors import CORSMiddleware
-
-app = FastAPI()
-
-# Add CORS middleware to allow frontend requests
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # You can restrict this to your frontend's URL in production
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+from contextlib import asynccontextmanager
 
 URL = "https://www.hermesairports.com/flight-info/arrivals-and-departures-lca"
 
@@ -101,9 +91,21 @@ async def update_cache_periodically():
         flight_cache["last_updated"] = int(time.time())
         await asyncio.sleep(300)  # 5 minutes
 
-@app.on_event("startup")
-async def startup_event():
+@asynccontextmanager
+def lifespan(app: FastAPI):
     asyncio.create_task(update_cache_periodically())
+    yield
+
+app = FastAPI(lifespan=lifespan)
+
+# Add CORS middleware to allow frontend requests
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # You can restrict this to your frontend's URL in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/lca-arrivals")
 async def get_arrivals():

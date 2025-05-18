@@ -1,6 +1,6 @@
 # LCA Flight Info API
 
-This project provides a FastEdge-based Python API to scrape and serve arrival and departure flight information from Larnaca Airport (LCA).
+This project provides a FastEdge-based Python API to scrape and serve arrival and departure flight information from Larnaca Airport (LCA). It also include a React frontend for showing the information in the style of an airport information board.
 
 ## Features
 - Scrapes https://www.hermesairports.com/flight-info/arrivals-and-departures-lca every 5 minutes
@@ -16,13 +16,13 @@ This project provides a FastEdge-based Python API to scrape and serve arrival an
 - Docker
 - docker-compose
 
-### Running the API
+### Running the App
 
 ```
 docker-compose up --build
 ```
 
-The API will be available at `http://localhost:8000`.
+The frontend will be available at `http://localhost` and the API will be available at `http://localhost:8000`.
 
 ## Endpoints
 - `GET /lca-arrivals`
@@ -36,4 +36,4 @@ docker-compose run --rm api pytest
 
 ---
 
-This project is for demonstration purposes and is not affiliated with Hermes Airports.
+This project is for educational and demonstration purposes and is not affiliated with Hermes Airports.
