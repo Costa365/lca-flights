@@ -1,5 +1,6 @@
 import asyncio
 import time
+from datetime import datetime
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from typing import List, Dict
@@ -82,14 +83,19 @@ async def fetch_flights() -> Dict[str, List[Dict]]:
 
 
 async def update_cache_periodically():
+
+
     while True:
-        print("Fetching flights data - Started", flush=True)
-        flights = await fetch_flights()
-        print("Fetching flights data - Finished", flush=True)
-        flight_cache["arrivals"] = flights["arrivals"]
-        flight_cache["departures"] = flights["departures"]
-        flight_cache["last_updated"] = int(time.time())
-        await asyncio.sleep(300)  # 5 minutes
+        try:
+            print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} Fetching flights data - Started", flush=True)
+            flights = await fetch_flights()
+            print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} Fetching flights data - Finished", flush=True)
+            flight_cache["arrivals"] = flights["arrivals"]
+            flight_cache["departures"] = flights["departures"]
+            flight_cache["last_updated"] = int(time.time())
+        except Exception as e:
+            print(f"Error: {e}", flush=True)
+        await asyncio.sleep(120)  # 2 minutes
 
 
 @asynccontextmanager

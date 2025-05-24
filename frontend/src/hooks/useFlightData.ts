@@ -7,7 +7,7 @@ interface UseFlightDataOptions {
   initialData?: Flight[];
 }
 
-export function useFlightData({ refreshInterval = 60000, initialData = [] }: UseFlightDataOptions = {}) {
+export function useFlightData({ refreshInterval = 120000, initialData = [] }: UseFlightDataOptions = {}) {
   const [flights, setFlights] = useState<Flight[]>(initialData);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
