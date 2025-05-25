@@ -15,14 +15,16 @@ services:
       - nginx-proxy
 
   frontend:
-    build: frontend
+    build: 
+      context: frontend
+      args:
+        VITE_API_URL: http://api-lca.costa365.site
     depends_on:
       - backend
     ports:
       - "8050:8050"
     restart: unless-stopped
     environment:
-      API_URL: "https://api-lca.costa365.site/lca-arrivals"
       VIRTUAL_HOST: lca.costa365.site
       PORT: 8050
       VIRTUAL_PORT: 8050
