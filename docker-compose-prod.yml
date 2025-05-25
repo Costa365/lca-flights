@@ -18,7 +18,7 @@ services:
     build: 
       context: frontend
       args:
-        VITE_API_URL: http://api-lca.costa365.site
+        VITE_API_URL: https://api-lca.costa365.site
     depends_on:
       - backend
     ports:
