@@ -101,6 +101,17 @@ main, footer {
   }
 }
 
+/* Larger screens */
+@media (min-width: 1000px) {
+  .grid-cols-12 > * {
+    font-size: 1.5rem !important;
+  }
+  
+  .text-xs.sm\:text-sm {
+    font-size: 1.5rem !important;
+  }
+}
+
 /* Customize scrollbar for the dark theme */
 ::-webkit-scrollbar {
   width: 8px;
