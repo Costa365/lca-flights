@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         mono: ['Consolas', 'Monaco', 'monospace'],
+        digital: ['DS-Digital', 'sans-serif'],
       },
       colors: {
         'airport-yellow': '#FFDD00',

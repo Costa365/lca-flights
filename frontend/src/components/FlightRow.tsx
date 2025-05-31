@@ -13,12 +13,12 @@ const FlightRow: React.FC<FlightRowProps> = ({ flight, isAlternate = false }) =>
     : 'bg-black border-b border-gray-800';
 
   return (
-    <div className={`grid grid-cols-12 gap-0.5 py-1 px-1 items-center text-xs sm:text-sm ${rowClass}`}>
+    <div className={`grid grid-cols-12 gap-0.5 py-1 px-1 items-center text-xs sm:text-sm font-digital ${rowClass}`}>
       <div className="col-span-2 min-w-[3rem] pl-2">
         <FlipDisplay value={flight.scheduledTime} className="text-xs sm:text-sm" />
       </div>
       
-      <div className="col-span-2 font-mono min-w-[3.5rem] pl-2">
+      <div className="col-span-2 min-w-[3.5rem] pl-2">
         <FlipDisplay value={flight.flightNumber} className="text-xs sm:text-sm" />
       </div>
       
