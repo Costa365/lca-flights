@@ -40,41 +40,17 @@ const DeparturesBoard: React.FC = () => {
   
   return (
     <div className="min-h-screen bg-gray-900 text-black">
-      <header className="bg-yellow-400 p-4 sticky top-0 z-10">
-        <div className="container mx-auto">
-            <h1 className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 100 100"
-                width="48"
-                height="48"
-                className="mr-2"
-                aria-label="Departures"
-              >
-                <g>
-                  <rect x="0" y="0" width="100" height="100" fill="#000" rx="2" />
-                  <rect x="10" y="85" width="80" height="7" fill="#ffe600" rx="2" />
-                  <path
-                    d="M80 20 L70 23 L65 40 L35 50 L60 20 L50 22 L15 62 Q10 70 15 72 Q20 74 80 48 Q85 45 80 43 Z"
-                    fill="#ffe600"
-                  />
-                </g>
-              </svg>
-            LARNACA AIRPORT DEPARTURES
-          </h1>
-          <div className="flex justify-between items-center mt-2 text-sm">
-            <p>Last updated: {formatLastUpdated()}</p>
-            <button 
-              onClick={() => refreshData()}
-              className="bg-black hover:bg-blue-900 px-2 py-1 rounded flex items-center text-white"
-              disabled={loading}
-            >
-              <RotateCcw size={14} className={`mr-1 ${loading ? 'animate-spin' : ''}`} />
-              Refresh
-            </button>
-          </div>
-        </div>
-      </header>
+      <div className="container mx-auto flex justify-between items-center py-2 px-4">
+        <p className="text-sm text-gray-300">Last updated: {formatLastUpdated()}</p>
+        <button 
+          onClick={() => refreshData()}
+          className="bg-gray-800 hover:bg-gray-700 px-2 py-1 rounded flex items-center text-gray-300"
+          disabled={loading}
+        >
+          <RotateCcw size={14} className={`mr-1 ${loading ? 'animate-spin' : ''}`} />
+          Refresh
+        </button>
+      </div>
       
       <main className="container mx-auto">
         {/* Header row */}
