@@ -12,14 +12,12 @@ export function useFlightData({ refreshInterval = 120000, initialData = [], type
   const [flights, setFlights] = useState<Flight[]>(initialData);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
-  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
   const fetchFlightData = async () => {
     try {
       setLoading(true);
       const data = await fetchFlights(type);
       setFlights(data);
-      setLastUpdated(new Date());
       setError(null);
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Failed to fetch flight data'));
@@ -43,8 +41,6 @@ export function useFlightData({ refreshInterval = 120000, initialData = [], type
   return {
     flights,
     loading,
-    error,
-    lastUpdated,
-    refreshData: fetchFlightData
+    error
   };
 }

@@ -1,23 +1,11 @@
 import React from 'react';
-import { Flight } from '../types/flight';
 import FlightRow from './FlightRow';
 import { useFlightData } from '../hooks/useFlightData';
-import { RotateCcw } from 'lucide-react';
 
 const ArrivalsBoard: React.FC = () => {
-  const { flights, loading, error, lastUpdated, refreshData } = useFlightData({
-    refreshInterval: 60000 // Refresh every minute
+  const { flights, loading, error } = useFlightData({
+    refreshInterval: 60000
   });
-  
-  const formatLastUpdated = () => {
-    if (!lastUpdated) return '';
-    
-    return lastUpdated.toLocaleTimeString('en-GB', {
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit'
-    });
-  };
   
   if (error) {
     return (
@@ -25,13 +13,6 @@ const ArrivalsBoard: React.FC = () => {
         <div className="text-center p-8">
           <h2 className="text-2xl font-bold text-red-500 mb-4">Error Loading Flight Data</h2>
           <p className="mb-4">{error.message}</p>
-          <button 
-            onClick={() => refreshData()}
-            className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded flex items-center mx-auto"
-          >
-            <RotateCcw size={16} className="mr-2" />
-            Try Again
-          </button>
         </div>
       </div>
     );
@@ -39,18 +20,6 @@ const ArrivalsBoard: React.FC = () => {
   
   return (
     <div className="min-h-screen bg-gray-900 text-black">
-      <div className="container mx-auto flex justify-between items-center py-2 px-4">
-        <p className="text-sm text-gray-300">Last updated: {formatLastUpdated()}</p>
-        <button 
-          onClick={() => refreshData()}
-          className="bg-gray-800 hover:bg-gray-700 px-2 py-1 rounded flex items-center text-gray-300"
-          disabled={loading}
-        >
-          <RotateCcw size={14} className={`mr-1 ${loading ? 'animate-spin' : ''}`} />
-          Refresh
-        </button>
-      </div>
-      
       <main className="container mx-auto">
         {/* Header row */}
         <div className="grid grid-cols-12 gap-0.5 py-1 px-1 bg-gray-800 font-semibold text-[10px] md:text-xs uppercase tracking-wide text-gray-300">
