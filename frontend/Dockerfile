@@ -15,6 +15,10 @@ RUN npm install -g typescript
 # Copy project files
 COPY . .
 
+# GET the API URL from build arguments
+ARG VITE_API_URL
+ENV VITE_API_URL=$VITE_API_URL
+
 # Build the application
 RUN npm run build
 
