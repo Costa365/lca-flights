@@ -28,6 +28,7 @@ services:
       VIRTUAL_HOST: lca.costa365.site
       PORT: 8050
       VIRTUAL_PORT: 8050
+      NODE_ENV: production
     networks:
       - nginx-proxy
 
