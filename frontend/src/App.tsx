@@ -35,7 +35,7 @@ function App() {
                 />
               </g>
             </svg>
-            <h1 className="text-xl font-bold">LARNACA AIRPORT</h1>
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold">LARNACA AIRPORT</h1>
           </div>
           
           <div className="inline-flex rounded-lg bg-black/10 p-1">
