@@ -67,7 +67,7 @@ async def fetch_flights() -> Dict[str, List[Dict]]:
                     date_time = f"{current_date} {time_}" if current_date else time_
                     flight_data = {
                         "Airline": airline.title(),
-                        "Flight": flight,
+                        "Flight": flight.replace(" ", ""),
                         "Time": date_time,
                         "Status": status,
                     }
@@ -83,8 +83,6 @@ async def fetch_flights() -> Dict[str, List[Dict]]:
 
 
 async def update_cache_periodically():
-
-
     while True:
         try:
             print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} Fetching flights data - Started", flush=True)

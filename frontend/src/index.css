@@ -102,7 +102,7 @@ main, footer {
 }
 
 /* Larger screens */
-@media (min-width: 1000px) {
+@media (min-width: 800px) {
   .grid-cols-12 > * {
     font-size: 1.5rem !important;
   }
@@ -111,6 +111,18 @@ main, footer {
     font-size: 1.5rem !important;
   }
 }
+
+/* Even Larger screens */
+@media (min-width: 1400px) {
+  .grid-cols-12 > * {
+    font-size: 2rem !important;
+  }
+  
+  .text-xs.sm\:text-sm {
+    font-size: 2rem !important;
+  }
+}
+
 
 /* Customize scrollbar for the dark theme */
 ::-webkit-scrollbar {
