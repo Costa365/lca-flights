@@ -24,9 +24,9 @@ const ArrivalsBoard: React.FC = () => {
         {/* Header row */}
         <div className="grid grid-cols-12 gap-0.5 py-1 px-1 bg-gray-800 font-semibold text-[10px] md:text-xs uppercase tracking-wide text-gray-300">
           <div className="col-span-2 pl-2">Time</div>
+          <div className="col-span-2 pl-2">Airline</div>
           <div className="col-span-2 pl-2">Flight</div>
           <div className="col-span-3 pl-2">From</div>
-          <div className="col-span-2 pl-2">Airline</div>
           <div className="col-span-3 pl-2">Status</div>
         </div>
         

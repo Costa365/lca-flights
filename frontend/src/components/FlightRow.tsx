@@ -25,18 +25,7 @@ const FlightRow: React.FC<FlightRowProps> = ({ flight, isAlternate = false }) =>
       <div className="col-span-2 min-w-[3rem] pl-2">
         <FlipDisplay value={flight.scheduledTime} className="text-xs sm:text-sm" />
       </div>
-      
-      <div className="col-span-2 min-w-[3.5rem] pl-2">
-        <FlipDisplay value={flight.flightNumber} className="text-xs sm:text-sm" />
-      </div>
-      
-      <div className="col-span-3 overflow-hidden min-w-[3.5rem] pl-2">
-        <FlipDisplay 
-          value={flight.origin} 
-          className="text-xs sm:text-sm" 
-        />
-      </div>
-      
+
       <div className="col-span-2 overflow-hidden min-w-[4rem] pl-2 flex items-center">
         {(() => {
           // Build candidate airline codes: prefer first 2 alphanumerics, then first 1
@@ -71,6 +60,17 @@ const FlightRow: React.FC<FlightRowProps> = ({ flight, isAlternate = false }) =>
             />
           );
         })()}
+      </div>
+      
+      <div className="col-span-2 min-w-[3.5rem] pl-2">
+        <FlipDisplay value={flight.flightNumber} className="text-xs sm:text-sm" />
+      </div>
+      
+      <div className="col-span-3 overflow-hidden min-w-[3.5rem] pl-2">
+        <FlipDisplay 
+          value={flight.origin} 
+          className="text-xs sm:text-sm" 
+        />
       </div>
       
       <div className="col-span-3 min-w-[4rem] pl-2">
