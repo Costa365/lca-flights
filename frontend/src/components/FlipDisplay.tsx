@@ -24,7 +24,7 @@ const FlipDisplay: React.FC<FlipDisplayProps> = ({ value, className = '', dark =
   }, [value, previousValue]);
   
   const baseClasses = "inline-block font-digital tracking-wider relative overflow-hidden";
-  const colorClasses = dark ? "bg-black text-yellow-300" : "bg-white text-black";
+  const colorClasses = dark ? "text-yellow-300" : "bg-white text-black";
   
   return (
     <span 
