@@ -22,7 +22,7 @@ const FlightRow: React.FC<FlightRowProps> = ({ flight, isAlternate = false }) =>
 
   return (
     <div className={`grid grid-cols-12 gap-0.5 py-1 px-1 items-center text-xs sm:text-sm font-digital ${rowClass}`}>
-      <div className="col-span-2 min-w-[3rem] pl-2">
+      <div className="col-span-1 min-w-[3rem] pl-1">
         <FlipDisplay value={flight.scheduledTime} className="text-xs sm:text-sm" />
       </div>
 
@@ -73,7 +73,7 @@ const FlightRow: React.FC<FlightRowProps> = ({ flight, isAlternate = false }) =>
         />
       </div>
       
-      <div className="col-span-3 min-w-[4rem] pl-2">
+      <div className="col-span-3 min-w-[4rem] pl-3">
         <FlipDisplay 
           value={flight.status} 
           className="text-xs sm:text-sm" 

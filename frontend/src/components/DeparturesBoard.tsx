@@ -24,11 +24,11 @@ const DeparturesBoard: React.FC = () => {
       <main className="container mx-auto">
         {/* Header row */}
         <div className="grid grid-cols-12 gap-0.5 py-1 px-1 bg-gray-800 font-semibold text-[10px] md:text-xs uppercase tracking-wide text-gray-300">
-          <div className="col-span-2 pl-2">Time</div>
+          <div className="col-span-1y pl-1">Time</div>
           <div className="col-span-2 pl-2">Airline</div>
           <div className="col-span-2 pl-2">Flight</div>
           <div className="col-span-3 pl-2">To</div>
-          <div className="col-span-3 pl-2">Status</div>
+          <div className="col-span-3 pl-3">Status</div>
         </div>
         
         {loading && flights.length === 0 ? (
