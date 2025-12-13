@@ -56,6 +56,11 @@ const DeparturesBoard: React.FC = () => {
           </div>
         )}
       </main>
+      <footer className="bg-gray-900 border-t border-gray-800 p-4 mt-8">
+        <div className="container mx-auto text-center text-sm text-gray-500">
+          <p className="mt-1">Data is refreshed automatically every minute</p>
+        </div>
+      </footer>
     </div>
   );
 };

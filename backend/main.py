@@ -67,7 +67,7 @@ async def fetch_flights() -> Dict[str, List[Dict]]:
                     date_time = f"{current_date} {time_}" if current_date else time_
                     flight_data = {
                         "Airline": airline.title(),
-                        "Flight": flight.replace(" ", ""),
+                        "Flight": flight.replace(" ", "").split("/")[0],
                         "Time": date_time,
                         "Status": status,
                     }
