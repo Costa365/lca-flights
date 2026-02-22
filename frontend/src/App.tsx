@@ -1,12 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ArrivalsBoard from './components/ArrivalsBoard';
 import DeparturesBoard from './components/DeparturesBoard';
 import { Plane, PlaneLanding, PlaneTakeoff } from 'lucide-react';
 
 type TabType = 'arrivals' | 'departures';
 
+function getTabFromPath(): TabType {
+  return window.location.pathname === '/departures' ? 'departures' : 'arrivals';
+}
+
 function App() {
-  const [activeTab, setActiveTab] = useState<TabType>('arrivals');
+  const [activeTab, setActiveTab] = useState<TabType>(getTabFromPath);
+
+  function navigate(tab: TabType) {
+    const path = tab === 'arrivals' ? '/' : '/departures';
+    window.history.pushState({}, '', path);
+    setActiveTab(tab);
+  }
+
+  useEffect(() => {
+    function onPopState() {
+      setActiveTab(getTabFromPath());
+    }
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
 
   return (
     <div className="font-mono min-h-screen bg-gray-900">
@@ -40,7 +58,7 @@ function App() {
           
           <div className="inline-flex rounded-lg bg-black/10 p-1">
             <button
-              onClick={() => setActiveTab('arrivals')}
+              onClick={() => navigate('arrivals')}
               className={`flex items-center px-3 py-1 rounded-md text-sm transition-colors duration-200 ${
                 activeTab === 'arrivals'
                   ? 'bg-black text-yellow-400'
@@ -51,7 +69,7 @@ function App() {
               Arrivals
             </button>
             <button
-              onClick={() => setActiveTab('departures')}
+              onClick={() => navigate('departures')}
               className={`flex items-center px-3 py-1 rounded-md text-sm transition-colors duration-200 ${
                 activeTab === 'departures'
                   ? 'bg-black text-yellow-400'
