@@ -35,7 +35,7 @@ const DeparturesBoard: React.FC = () => {
           <div className="flex justify-center items-center py-20">
             <div className="animate-pulse flex flex-col items-center">
               <div className="h-8 w-8 bg-blue-500 rounded-full mb-4 animate-bounce"></div>
-              <p className="text-lg">Loading flight information...</p>
+              <p className="text-lg text-gray-300">Loading flight information...</p>
             </div>
           </div>
         ) : (
