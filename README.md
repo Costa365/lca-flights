@@ -2,6 +2,9 @@
 
 This project provides a FastEdge-based Python API to scrape and serve arrival and departure flight information from Larnaca Airport (LCA). It also include a React frontend for showing the information in the style of an airport information board.
 
+It's hosted at [lca.costa365.site](https://lca.costa365.site).
+
+
 ## Features
 - Scrapes https://www.hermesairports.com/flight-info/arrivals-and-departures-lca every 2 minutes
 - Exposes two endpoints:
